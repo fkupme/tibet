@@ -1,0 +1,123 @@
+$font-path: '@/assets/fonts/';
+@font-face {
+	font-family: 'nunito-extrabold';
+	src: url('#{$font-path}/NunitoSans_7pt-ExtraBold.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 800;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'nunito-bold';
+	src: url('#{$font-path}/NunitoSans_7pt-Bold.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'nunito-semibold';
+	src: url('#{$font-path}/NunitoSans_7pt-SemiBold.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'nunito-regular';
+	src: url('#{$font-path}/NunitoSans_7pt-Regular.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'nunito-light';
+	src: url('#{$font-path}/NunitoSans_7pt-Light.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'next-art-bold';
+	src: url('#{$font-path}/NEXT_ART_Bold.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+
+$container-width-mobile: 380 / 390 * 100%;
+$mobile-section-padding: 12.82vw;
+
+$container-width-tablet: 580/ 640 * 100%;
+$tablet-section-padding: 12.82vw;
+
+$container-width-desktop: 1180/ 1920 * 100%;
+$desktop-section-padding: 5.21vw;
+
+$color-dark-gray: #18121E;
+$color-light-gray: #FDFDFD;
+$color-black: #000000;
+
+@function font-size($size, $width) {
+	@return (($size * 100) / $width) + vw;
+}
+@function nunito ($weight){
+	@if $weight == 'nabold'{
+		@return 'next-art-bold';
+	}
+	@return 'nunito-#{$weight}';
+}
+@mixin font-mobile($size, $color, $weight) {
+	font-size: font-size($size, 390);
+	color: $color;
+	font-family: nunito($weight);
+}
+@mixin font-tablet($size, $color, $weight) {
+	font-size: font-size($size, 640);
+	color: $color;
+	font-family: nunito($weight);
+}
+@mixin font-desktop($size, $color, $weight) {
+	font-size: font-size($size, 1920);
+	color: $color;
+	font-family: nunito($weight);
+}
+
+button {
+	background: transparent;
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+.container {
+	padding: 0 10px;
+	align-self: center;
+	margin: 0 auto;
+	width: $container-width-mobile;
+	@media (width>640px) {
+		width: $container-width-tablet;
+	}
+	@media (width>1024px) {
+		width: $container-width-desktop;
+	}
+}

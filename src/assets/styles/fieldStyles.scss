@@ -1,0 +1,32 @@
+@import "@/assets/styles/globals.scss";
+.select-label {
+	display: none;
+	@media(width>640px){
+		@include font-tablet(8, $color-light-gray, 'regular');
+		display: block;
+		text-align: center;
+		.select-field{
+					@include font-tablet(12, $color-light-gray, 'bold');
+					display: block;
+					background: transparent;
+					border: 1px solid #E1E3E4;
+					border-radius: 4px;
+					padding: 0 8px;
+					margin-bottom: 8px;
+					height: 5vw;
+					width: 19vw;
+					option{
+						color: #1A3E3E;
+						background:  #2600e70d;
+					}
+	}
+}
+@media(width>1024px){
+				@include font-desktop(14, $color-light-gray, 'regular');
+				.select-field{
+          @include font-desktop(14, $color-light-gray, 'bold');
+					height: 2.86vw;
+					width: 14vw;
+        }
+		}
+}
