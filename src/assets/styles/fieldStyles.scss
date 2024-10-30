@@ -1,6 +1,9 @@
 @import "@/assets/styles/globals.scss";
 .select-label {
 	display: none;
+	.select-field:focus{
+		outline: none;
+	}
 	@media(width>640px){
 		@include font-tablet(8, $color-light-gray, 'regular');
 		display: block;
