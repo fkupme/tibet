@@ -71,22 +71,21 @@ $color-black: #000000;
 }
 @mixin font-mobile($size, $color, $weight) {
 	font-size: font-size($size, 390);
-	color: $color;
-	font-family: nunito($weight);
+	@if $color {color: $color;}
+	@if $weight {font-family: nunito($weight);}
 }
 @mixin font-tablet($size, $color, $weight) {
 	font-size: font-size($size, 640);
-	color: $color;
-	font-family: nunito($weight);
+	@if $color {color: $color;}
+	@if $weight {font-family: nunito($weight);}
 }
 @mixin font-desktop($size, $color, $weight) {
 	font-size: font-size($size, 1920);
-	color: $color;
-	font-family: nunito($weight);
+	@if $color {color: $color;}
+	@if $weight {font-family: nunito($weight);}
 }
 
 button {
-	background: transparent;
 	outline: none;
 	border: none;
 	cursor: pointer;
@@ -109,7 +108,14 @@ a {
 	white-space: nowrap;
 	width: 1px;
 }
-.container {
+.noselect {
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none; 
+  -khtml-user-select: none; 
+  -moz-user-select: none;  -ms-user-select: none;
+  user-select: none; 
+}
+.container {    
 	padding: 0 10px;
 	align-self: center;
 	margin: 0 auto;
@@ -119,5 +125,16 @@ a {
 	}
 	@media (width>1024px) {
 		width: $container-width-desktop;
+	}
+}
+.main-text {
+	@include font-mobile(16, $color-dark-gray, regular);
+	text-align: left;
+	line-height: 1.5;
+	@media(width>640px){
+		@include font-tablet(18, false, false);
+	}
+	@media(width>1024px){
+	@include font-desktop(18, false, false);
 	}
 }

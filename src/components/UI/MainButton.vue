@@ -1,5 +1,5 @@
 <template>
-	<button @click.prevent class="main-button">
+	<button @click.prevent class="main-button noselect">
 		<slot></slot>
 	</button>
 </template>
@@ -18,16 +18,16 @@ export default {
 	padding: 12px 24px;
 	border-radius: 4px;
 	background: #1A3E3E;
-	@include font-mobile(16, #1A3E3E, "semibold");
+	@include font-mobile(16, $color-light-gray, "semibold");
 	letter-spacing: 0.192px;
 	align-self: center;
 	@media (width>640px) {
-		@include font-tablet(18, #1A3E3E, "semibold");
+		@include font-tablet(18, $color-light-gray, "semibold");
 	}
 	@media (width>1024px) {
-		@include font-desktop(16, #1A3E3E, "semibold");
+		@include font-desktop(16, $color-light-gray, "semibold");
 		transition: 0.3s ease-in-out;
-		:hover{
+		&:hover{
 			background-color: #F2BE22;
 			color: #1A3E3E;
 			transition: 0.3s ease-in-out;

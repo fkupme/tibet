@@ -1,13 +1,16 @@
 <template>
-  <my-header />
+  <my-header/>
+  <my-main/>
 </template>
 
 <script>
-import MyHeader from './components/MyHeader.vue';
+import MyHeader from '@/components/MyHeader.vue';
+import MyMain from '@/components/MyMain.vue';
 
 export default {
 	components: {
 		MyHeader,
+		MyMain,
 	},
 };
 </script>

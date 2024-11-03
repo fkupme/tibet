@@ -2,7 +2,7 @@
   <nav class="menu" :class='{"show-mask": show}'>
     <div class="menu-wrapper" :class='{"show-menu": show}'>
       <ul class="menu-list">
-        <button type="button" @click='$emit("toggle", false)' class="menu-close-button"><img src="@/assets/svg/close_icon.svg" alt=""></button>
+        <close-button @click='$emit("toggle", false)' />
         <li class="menu-list__item"><a href="#" class="menu-list__link">Главная</a></li>
         <li class="menu-list__item"><a href="#" class="menu-list__link">Про гида</a></li>
         <li class="menu-list__item"><a href="#" class="menu-list__link">Программа тура</a></li>
@@ -17,8 +17,6 @@
 
 <script>
 export default {
-	methods: {
-	},
 	props: {
 		show: {
 			type: Boolean,
@@ -41,13 +39,10 @@ export default {
     -webkit-backdrop-filter: blur(3px);
     -moz-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
-  z-index: 999;
+  z-index: 1;
   visibility: hidden;
   opacity: 0;
-  transition: 0.4s ease-in-out;
-  &-close-button {
-    align-self: flex-end;
-  }
+  transition: transform, opacity, 0.4s ease-in-out;
   &-wrapper{
     padding-left: 20px;
     width: 75vw;
@@ -55,8 +50,8 @@ export default {
     background: #1A3E3E;
     display: flex;
     flex-direction: column;
-    transform: scale(0);
-    transition: 0.8s ease-in-out;
+    transform: scale(0) translate(80vw, -100vw);
+    transition: opacity, transform 0.8s ease-in-out;
   }
   &-list{
     display: flex;
@@ -78,28 +73,77 @@ export default {
     }
     &__link{
       @include font-mobile(14, #fff, "regular");
-      color: #ffffff;
       text-decoration: none;
     }
   }
   &__button{
     display: none;
   }
-  @media (width>640px) {
+  // ------------------------------------------
+	@media (width>640px) {
 
 	}
-	@media (width>1024px) {
-
+  @media (width>1024px) {
+      position: static;
+      display: block;
+      inset: unset;
+      background: transparent;
+      -webkit-backdrop-filter: none;
+      -moz-backdrop-filter: none;
+      backdrop-filter: none;
+      visibility: visible;
+      opacity: 1;
+      transition: none;
+  &-wrapper{
+    padding-left: 20px;
+    width: auto;
+    height: auto;
+    background: inherit;
+    gap: 15px;
+    flex-direction: row;
+    justify-content: space-between;
+		align-items: center;
+		width: 45vw;
+    transform: scale(1);
+    transition: opacity, transform 0.8s ease-in-out;
+  }
+  &-list{
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+		width: 100%;
+    &__item{
+      padding-left: 18px;
+      list-style-type: none;
+      position: static;
+      &:before{
+        content: unset;
+        position: absolute;
+        background-image: none;
+        background-repeat: no-repeat;
+        width: unset;
+        height: unset;
+        left: unset;
+      }
+    }
+    &__link{
+      @include font-desktop(18, false, "semibold");
+      white-space: nowrap;
+    }
+  }
+  .menu > .menu__button{
+    display: none;
+  }
 	}
 }
 .show-mask {
   visibility: visible;
   opacity: 1;
-  transition: 0.4s ease-in-out;
+  transition: opacity, transform 0.4s ease-in-out;
 }
 
 .show-menu {
-  transform: scale(1);
-  transition: 0.8s ease-in-out;
+  transform: scale(1) translate(0, 0);
+  transition: opacity, transform 0.8s ease-in-out;
 }
 </style>

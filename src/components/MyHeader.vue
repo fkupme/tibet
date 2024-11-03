@@ -6,13 +6,13 @@
           <img src="@/assets/svg/logo.svg" class="logo-img" alt="logo" />
           <span class="visually-hidden">logo</span>
         </a>
-  <button class="burger" @click.prevent='toggle'>
+  <button class="burger" @click.prevent='toggle(true)'>
     <img src="@/assets/svg/burger.svg" alt="burger" class="burger-img" /><span
       class="visually-hidden"
       >burger-menu</span
     >
   </button>
-        <my-menu @toggle='toggle' :show="show"/>
+        <my-menu @toggle='toggle(true)' :show="show"/>
       </div>
       <div class="header-wrapper">
         <h1 id="header__title" class="header__title">
@@ -25,20 +25,12 @@
 </template>
 
 <script>
+import toggleMixin from '@/mixins/toggleMixin';
 import MyMenu from "./MyMenu.vue";
 import MySearch from "./MySearch.vue";
 
 export default {
-	data() {
-		return {
-			show: false,
-		};
-	},
-	methods: {
-		toggle() {
-			this.show = !this.show;
-		},
-	},
+	mixins: [toggleMixin],
 	name: "my-header",
 	components: {
 		MyMenu,
@@ -51,6 +43,7 @@ export default {
 @import "@/assets/styles/globals.scss";
 
 .header {
+	position: relative;
   background-image: url("@/assets/images/bg_header_mobile.png");
 	text-align: left;
 	background-position: center center;
@@ -58,29 +51,31 @@ export default {
 	width: 100%;
 	background-repeat: no-repeat;
 	padding: 20px 0 $mobile-section-padding;
+	.burger {
+				background-color: transparent;
+			}
 		&-area{
 			display: flex;
 			justify-content: space-between;
 		}
 	@media (width>640px) {
-    padding: 20px 0 $tablet-section-padding;
-  }
-	@media (width>640px) {
 		padding: 20px 0 $desktop-section-padding;
 	}
 	@media (width>1024px) {
 		background-image: url("@/assets/images/bg_header_desktop.png");
+		.burger {
+				display: none;
+			}
 		}
-
   &__title {
 		margin-top: 234px;
 		text-transform: uppercase;
     @include font-mobile(28, $color-light-gray, "nabold");
 		@media (width>640px) {
-			@include font-tablet(24, $color-light-gray, "nabold");
+			@include font-tablet(24, false, false);
 		}
 		@media (width>1024px) {
-			@include font-desktop(54, $color-light-gray, "nabold");
+			@include font-desktop(54, false, false);
 		}
   }
 }

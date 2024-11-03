@@ -1,6 +1,6 @@
 <template>
   <label class="select-label" :for="id">
-		<select :value='modelValue' @input='upd' class="select-field" :name="id" :id="id">
+		<select :value='modelValue' @input='upd' class="select-field noselect" :name="id" :id="id">
 			<option :value="option.key" v-for="option in options" :key="option">{{ option }}</option>
 		</select>
 		<slot></slot>
@@ -11,7 +11,7 @@
 export default {
 	name: "my-select",
 	props: {
-		options: Array,
+		options: Object,
 		id: String,
 		modelValue: String,
 	},
@@ -25,5 +25,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/fieldStyles.scss'
+@import '@/assets/styles/fieldStyles.scss';
 </style>
