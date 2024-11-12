@@ -19,7 +19,7 @@
 						<button
 						class="search__button"
 						:class='{"search__button_active":!isMobile || show}'
-						@click.prevent='getData'
+						@click.prevent='getData; toggle(isMobile);'
 						>Найти программу</button>
 					</form>
         </section>
@@ -74,6 +74,7 @@ export default {
 @import "@/assets/styles/globals.scss";
 @import '@/assets/styles/fieldStyles.scss';
 .search {
+	display: inline-flex;
 	@keyframes rotate {
 		from{transform: rotateY(0)}
 		50%{

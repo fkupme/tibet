@@ -85,6 +85,12 @@ $color-black: #000000;
 	@if $weight {font-family: nunito($weight);}
 }
 
+html{
+	@media (prefers-reduced-motion: no-preference) {
+		scroll-behavior: smooth;
+	}
+}
+
 button {
 	outline: none;
 	border: none;

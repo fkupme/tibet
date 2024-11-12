@@ -21,6 +21,7 @@ export default {
 	text-align: left;
 	&-category {
 	@include font-mobile(16, #F2BE22, "regular");
+	margin-bottom: 6px;
 	}
 	&-title {
 	@include font-mobile(24, $color-dark-gray, "extrabold");

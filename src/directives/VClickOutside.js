@@ -69,6 +69,7 @@ function unbind(el) {
 const VClickOutside = {
   bind,
   unbind,
+  name: 'click-outside',
 };
 
 export default VClickOutside;
