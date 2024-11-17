@@ -1,5 +1,5 @@
 <template>
-	<article class="condition" @click.prevent>
+	<article class="condition" v-return='"class"' @click.prevent>
 		<div class="condition__icon">
 			<slot name='icon'></slot>
 		</div>
@@ -19,7 +19,6 @@
 
 <script>
 export default {
-	props: ['isActive'],
 	name: 'offer-card',
 	mounted() {
 		if (this.isActive) {

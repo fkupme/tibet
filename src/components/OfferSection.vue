@@ -4,10 +4,10 @@
 				<div class="offer-box">
 					<section-title @click.prevent>
 						<template v-slot:category>
-							<h2 class="offer__category main-category">наше предложение</h2>
+							наше предложение
 						</template>
 							<template v-slot:title>
-								<h3 class="offer__title main-title"><a href="#" class="offer-link">Лучшие программы для тебя</a></h3>
+								Лучшие программы для тебя
 							</template>
 					</section-title>
 					<p class="offer__text main-text">Его корни уходят в один фрагмент классической латыни 45 года
@@ -89,6 +89,9 @@ export default {
 	},
 	components: {
 		OfferCard,
+	},
+	methods: {
+		initSwipe() {},
 	},
 	name: 'offer-section',
 };

@@ -15,8 +15,10 @@ export default {
 					background: 'red',
 				},
 					isActive:isActive,
-				mounted(){
-					this.isActive = true;
+				data(){
+					return {
+						isActive: true
+					}
 				}
 			},
 		);
