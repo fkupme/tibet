@@ -32,20 +32,12 @@ export default {
 			required: true,
 		}
 	},
-	methods:{
-		setImageLink(){
-			return this.width < 1024? this.card.image: this.card.desktopImage
-		},
-	},
 	computed:{
 		background() {
 			return {
 				backgroundImage: this.width<640? `url(${this.card.image})`: `url(${this.card.imageDesktop})`
 			}
 		},
-	},
-	mounted(){
-		this.link = this.setImageLink();
 	},
 	name: 'trend-card',
 };
@@ -134,7 +126,7 @@ export default {
 			}
 		}
 	}
-	@media (width>640px) {
+	@media (width>1024px) {
 		&-description__text{
 			@include font-tablet(14, false, false);
 			padding: 0 1px;
@@ -170,9 +162,6 @@ export default {
 				overflow: hidden;
 			}
 			&__footnote{
-				color: #FDFDFD;
-				font-family: nunito-regular;
-				font-size: var(--desktop-font-size-14px);
 				@include font-desktop(14, $color-light-gray, 'regular');
 				display: block;
 				overflow: hidden;

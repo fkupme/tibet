@@ -17,4 +17,7 @@ export default {
 	beforeMount() {
 		window.addEventListener('resize', this.updateWidth);
 	},
+	beforeDestroy() {
+		window.removeEventListener('resize', this.updateWidth);
+	}
 };

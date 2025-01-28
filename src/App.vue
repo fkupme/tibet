@@ -17,6 +17,7 @@ export default {
 
 <style lang="scss">
 #app {
+  position: relative;
   font-family: nunito-regular, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

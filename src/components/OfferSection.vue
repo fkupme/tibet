@@ -46,17 +46,20 @@
 					</offer-card>
 					<main-button class="offer__button main-button">Стоимость программ</main-button>
 				</div>
-				<ul class="offer-image-list">
+				<ul class="offer-image-list noselect">
 					<li class="offer-image-list__item">
 						<a href="#" class="offer-image-list__link ">
 							<span class="visually-hidden">1</span>
-							<img src="@/assets/images/offer-1.png" alt="">
+							<img
+								class="offer-image-list__image"
+								src="@/assets/images/offer-1.png" alt="">
 						</a>
 					</li>
 					<li class="offer-image-list__item">
 						<a href="#" class="offer-image-list__link ">
 							<span class="visually-hidden">1</span>
 							<img
+								class="offer-image-list__image"
 								src="@/assets/images/offer-2.png" alt="">
 						</a>
 					</li>
@@ -64,13 +67,14 @@
 						<a href="#" class="offer-image-list__link ">
 							<span class="visually-hidden">1</span>
 							<img
+								class="offer-image-list__image"
 								src="@/assets/images/offer-3.png" alt="">
 						</a>
 					</li>
 					<li class="offer-image-list__item">
 						<a href="#" class="offer-image-list__link ">
 							<span class="visually-hidden">1</span>
-							<img src="@/assets/images/offer-4.png" alt="">
+							<img class="offer-image-list__image" src="@/assets/images/offer-4.png" alt="">
 						</a>
 					</li>
 				</ul>
@@ -138,6 +142,13 @@ export default {
 		grid-template-rows: repeat(2, 1fr);
 		grid-template-columns: repeat(2, 1fr);
 		gap: 10px;
+		&__item:first-child, &__item:nth-child(2){
+			display: inline-flex;
+			align-items: flex-end;
+		}
+		&__image {
+			width: 13vw;
+		}
 	}
 	}
 }

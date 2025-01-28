@@ -16,23 +16,32 @@
 						:style="{
       				'--swiper-navigation-color': '#fff',
       				'--swiper-pagination-color': '#fff',
+							'--swiper-pagination-bullets': 'black',
     				}"
 						virtual
-						speed='600'
 						navigation
-						pagination
+						:pagination="{
+							dynamicBullets: true
+						}"
 						keyboard
 						loop
 					>
 						<swiper-slide
-						v-for="card in cards"
+						v-for="(card, index) in cards"
 						:key='card.id'
 						:virtualIndex="card.id"
 						>
-							<trend-card :card='card'/>
+								<trend-card
+								v-parallax='0.2 + 0.01 * index' 
+								@click='setIndex(index)'
+								:card='card'
+								/>
 						</swiper-slide>
 						
-					</swiper>
+					</swiper>	
+				<transition name="bubble">
+					<trend-active class="trend-active" v-if="index!==null" @close='setIndex(null)' :card="cards[index]"/>
+				</transition>
 				</div>
 			<button class="trends__button main-button">Рейтинг направлений</button>
 		</section>
@@ -41,18 +50,31 @@
 /* eslint-disable */ 
 import { mapState } from 'vuex';
 import { Swiper, SwiperSlide} from 'swiper/vue';
-import { Virtual, Navigation, Pagination, Keyboard } from 'swiper/modules';
+import { Virtual, Navigation, Pagination, Keyboard, Parallax} from 'swiper/modules';
 import viewportWidth from '@/mixins/viewportWidth';
-import TrendCard from './TrendCard.vue';
-import 'swiper/css';
+import TrendCard from '@/components/TrendCard.vue';
+import TrendActive from '@/components/TrendActive.vue' 
+import 'swiper/css'; 
 import 'swiper/css/navigation';
 export default {
+	data() {
+		return {
+			modules: [Virtual, Navigation, Pagination, Keyboard, Parallax],
+			index: null,
+		};
+	},
+	mixins: [viewportWidth],
 	components: {
 		TrendCard,
 		Swiper,
 		SwiperSlide,
+		TrendActive,
 	},
-	mixins: [viewportWidth],
+	methods: {
+		setIndex(index) {
+      this.index = index;
+    },
+	},
 	computed: {
 		...mapState({
 			cards: state => state.trends.trends,
@@ -69,18 +91,21 @@ export default {
 		
 	},
 	name: 'trends-section',
-	data() {
-		return {
-			modules: [Virtual, Navigation, Pagination, Keyboard],
-		};
-	},
 };
 </script>
 
 <style lang='scss'>
 @import "@/assets/styles/globals.scss";
 .trends {
+	.bubble-enter-active, .bubble-leave-active{
+		transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+	}
+	.bubble-enter-from, .bubble-leave-to{
+		transform: scale(0);
+    opacity: 0;		
+	}
 	padding-block: $mobile-section-padding;
+	animation: bubble 0.5s ease-in;
 	&-title{
 		margin-bottom: 32px;
 	}

@@ -63,7 +63,8 @@ export default {
 		padding-block: $tablet-section-padding;
 		&-video__player{
 			object-fit: cover;
-			height: 90vw;
+			width: 70%;
+			aspect-ratio: 1;
 		}
 	}
 	@media(width>1024px){

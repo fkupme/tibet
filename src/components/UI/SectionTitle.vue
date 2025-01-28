@@ -22,6 +22,7 @@ export default {
 	&-category {
 	@include font-mobile(16, #F2BE22, "regular");
 	margin-bottom: 6px;
+	text-transform: lowercase;
 	}
 	&-title {
 	@include font-mobile(24, $color-dark-gray, "extrabold");

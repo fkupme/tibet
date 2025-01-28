@@ -51,6 +51,10 @@ export default {
 		}
 	}
 	@media (width>640px) {
+		padding: 16px;
+		border-radius: 10px;
+		box-shadow: 0px 0px 15px 0px rgba(24, 18, 30, 0.12);
+		background: rgb(253, 253, 253);
 		&__icon {
 			width: 60%;
 		}
