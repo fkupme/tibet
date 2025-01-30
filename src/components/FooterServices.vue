@@ -34,6 +34,8 @@ export default {
 
 .services {
   &__title {
+    text-align: left;
+    @include font-mobile(20, $color-white, 'regular');
     margin-bottom: 20px;
   }
 }
@@ -61,13 +63,13 @@ export default {
   }
 
   &__link {
-    @include font-mobile(14, #fff, 'regular');
+    @include font-mobile(14, $color-white, 'regular');
   }
 }
 
 .new {
   padding: 2px 10px;
-  border-radius: 30%;
+  border-radius: 5px;
   background: #fff;
   color: $color-dark-green;
   @include font-mobile(12, false, 'bold');
@@ -76,6 +78,9 @@ export default {
 }
 
 @media (width > 640px) {
+  .services__title {
+    @include font-tablet(22, false, false);
+  }
   .services-list__link {
     @include font-tablet(16, false, false);
   }
@@ -88,6 +93,9 @@ export default {
 @media (width > 1024px) {
   .services {
     width: calc(100% / 3);
+    &__title {
+      @include font-desktop(20, false, false);
+    }
   }
 
   .services-list__link {

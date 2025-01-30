@@ -33,6 +33,8 @@ export default {
 
 .importantly {
   &__title {
+    @include font-mobile(20, $color-white, 'regular');
+    text-align: left;
     margin-bottom: 20px;
   }
 }
@@ -65,6 +67,9 @@ export default {
 }
 
 @media (width > 640px) {
+  .importantly__title {
+    @include font-tablet(22, false, false);
+  }
   .importantly-list__link {
     @include font-tablet(16, false, false);
   }
@@ -72,6 +77,9 @@ export default {
 
 @media (width > 1024px) {
   .importantly {
+    &__title {
+      @include font-desktop(20, false, false);
+    }
     width: calc(100% / 3);
   }
 
