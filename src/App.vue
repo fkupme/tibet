@@ -1,18 +1,21 @@
 <template>
-  <my-header/>
-  <my-main/>
+  <my-header />
+  <my-main />
+  <my-footer />
 </template>
 
 <script>
-import MyHeader from '@/components/MyHeader.vue';
-import MyMain from '@/components/MyMain.vue';
+import MyHeader from '@/components/MyHeader.vue'
+import MyMain from '@/components/MyMain.vue'
+import MyFooter from '@/components/MyFooter.vue'
 
 export default {
-	components: {
-		MyHeader,
-		MyMain,
-	},
-};
+  components: {
+    MyHeader,
+    MyMain,
+    MyFooter,
+  },
+}
 </script>
 
 <style lang="scss">
@@ -24,5 +27,4 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
 </style>

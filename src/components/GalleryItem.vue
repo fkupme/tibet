@@ -1,26 +1,34 @@
 <template>
-  <li class="gallery-list__item gallery-slider__slide swiper-slide">
-    <a href="#" class="gallery-list__link">
+  <div class="gallery__item">
+    <a href="#" class="gallery__link">
+      <span class="visually-hidden">item</span>
       <picture>
-        <source :srcset="item.mobile" media="(max-width: 1023px)" />
-        <source :srcset="item.desktop" media="(min-width: 1024px)" />
-        <img :src="item.mobile" alt="" class="gallery-list__image" />
+        <source :srcset="item.mobile" media="(max-width: 639px)" />
+        <source :srcset="item.desktop" media="(min-width: 640px)" />
+        <img :src="item.mobile" alt="" class="gallery__image" />
       </picture>
     </a>
-  </li>
+  </div>
 </template>
 
 <script>
 export default {
+  name: 'gallery-item',
   props: {
     item: {
       type: Object,
       required: true,
     },
   },
-};
+}
 </script>
 
-<style scoped>
-/* Ваши стили */
+<style lang="scss" scoped>
+.gallery__item {
+  display: block;
+  width: 100%;
+}
+.gallery__image {
+  width: 100%;
+}
 </style>

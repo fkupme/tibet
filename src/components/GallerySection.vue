@@ -1,57 +1,109 @@
 <template>
   <section class="gallery">
     <div class="container">
-      <p class="gallery__category main-category">делимся впечатлениями</p>
-      <h2 class="gallery__title main-title">Блог о путешествиях</h2>
-      <div class="gallery-swiper swiper">
-        <swiper
-					v-if='isMobile'
-          :modules="modules"
-          :slides-per-view="1"
-          :space-between="20"
-          :pagination="{ clickable: true }"
-          :loop="true"
-          virtual
+      <section-title class="trends-title" :align="'center'" @click.prevent>
+        <template #category> фото-отчет </template>
+        <template #title> Делимся впечатлениями </template>
+      </section-title>
+      <swiper
+        v-if="isMobile"
+        :modules="modules"
+        :slides-per-view="1"
+        :space-between="20"
+        :style="{ '--swiper-pagination-color': '#fff' }"
+        :pagination="{ clickable: true }"
+        :loop="true"
+        virtual
+      >
+        <swiper-slide
+          v-for="(item, index) in items"
+          :key="index"
+          :virtual-index="index"
         >
-          <swiper-slide v-for="(item, index) in items" :key="index" :virtualIndex="index">
-            <GalleryItem :item="item" />
-          </swiper-slide>
-        </swiper>
+          <GalleryItem :item="item" />
+        </swiper-slide>
+      </swiper>
+      <div v-else class="gallery-box">
+        <gallery-item
+          v-for="(item, index) in items"
+          :key="index"
+          class="gallery__item"
+          :item="item"
+        />
       </div>
-      <button class="gallery__button main-button">Наш pinterest</button>
+      <main-button class="gallery__button">Наш pinterest</main-button>
     </div>
   </section>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Virtual, Navigation, Pagination, Keyboard, Parallax } from 'swiper/modules';
-import 'swiper/swiper-bundle.css';
-import GalleryItem from '@/components/GalleryItem.vue';
-import viewportWidth from '@/mixins/viewportWidth';
+import { mapState } from 'vuex'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import {
+  Virtual,
+  Navigation,
+  Pagination,
+  Keyboard,
+  Parallax,
+} from 'swiper/modules'
+import 'swiper/swiper-bundle.css'
+import GalleryItem from '@/components/GalleryItem.vue'
+import viewportWidth from '@/mixins/viewportWidth'
 
 export default {
+  name: 'gallery-section',
   components: {
     Swiper,
     SwiperSlide,
     GalleryItem,
   },
+  mixins: [viewportWidth],
   data() {
     return {
       modules: [Virtual, Navigation, Pagination, Keyboard, Parallax],
-      items: [
-        { mobile: 'images/gallery-1.png', desktop: 'images/gallery-1-desktop.png' },
-        { mobile: 'images/gallery-2.png', desktop: 'images/gallery-2-desktop.png' },
-        { mobile: 'images/gallery-3.png', desktop: 'images/gallery-3-desktop.png' },
-        { mobile: 'images/gallery-4.png', desktop: 'images/gallery-4-desktop.png' },
-        { mobile: 'images/gallery-5.png', desktop: 'images/gallery-5-desktop.png' },
-        { mobile: 'images/gallery-6.png', desktop: 'images/gallery-6-desktop.png' },
-      ],
-    };
+    }
   },
-};
+  computed: {
+    ...mapState({ items: (state) => state.gallery.galleryItems }),
+  },
+}
 </script>
 
-<style scoped>
-/* Ваши стили */
+<style lang="scss" scoped>
+@import '@/assets/styles/globals.scss';
+.gallery {
+  padding-block: $mobile-section-padding;
+  &__box {
+  }
+  @media (width>640px) {
+    padding-block: $tablet-section-padding;
+    &-box {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 20px;
+    }
+    &__item:first-child {
+      grid-column: 1 / span 2;
+    }
+    &__item:nth-child(5) {
+      grid-column: 1 / span 2;
+      order: 4;
+    }
+  }
+  @media (width>1024px) {
+    padding-block: $desktop-section-padding;
+    &-box {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+    &__item:first-child {
+      grid-column: 1 / span 2;
+    }
+    &__item:nth-child(5) {
+      grid-column: 2 / span 2;
+      order: unset;
+    }
+  }
+}
 </style>
