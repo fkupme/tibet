@@ -4,9 +4,7 @@ const path = require('path');
 module.exports = defineConfig({
   lintOnSave: true,
   transpileDependencies: true,
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/'
-    : '/',
+  publicPath: '/',
   configureWebpack: {
     resolve: {
       alias: {
