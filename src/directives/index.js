@@ -1,4 +1,4 @@
 import VClickOutside from './VClickOutside'
-import VReturn from './VReturn'
+import VParallax from './VParallax'
 
-export default [VClickOutside, VReturn]
+export default [VClickOutside, VParallax]

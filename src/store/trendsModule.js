@@ -1,4 +1,3 @@
-/* eslint-disable */
 import LinkCreator from '@/utils/linkCreator'
 
 const link = new LinkCreator(`@/assets/images/`, 'trend')

@@ -27,18 +27,14 @@
           :key="card.id"
           :virtual-index="card.id"
         >
-          <trend-card
-            v-parallax="0.2 + 0.01 * i"
-            :card="card"
-            @click="setIndex(i)"
-          />
+          <trend-card :card="card" @click="setIndex(i)" />
         </swiper-slide>
       </swiper>
       <transition name="bubble">
         <trend-active
-          v-if="i !== null"
+          v-if="index !== null"
           class="trend-active"
-          :card="cards[i]"
+          :card="cards[index]"
           @close="setIndex(null)"
         />
       </transition>

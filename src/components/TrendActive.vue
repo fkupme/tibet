@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
   <div class="wrapper">
     <article class="trend-active" :style="background">

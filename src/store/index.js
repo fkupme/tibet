@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { createStore } from 'vuex'
 import searchModule from '@/store/searchModule'
 import trendsModule from '@/store/trendsModule'
