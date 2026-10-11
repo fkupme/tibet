@@ -1,4 +1,3 @@
-/* eslint-disable */
 const events = ['click']
 
 function onClickOutside({ event, el, handler, middleware }) {
@@ -28,7 +27,7 @@ function processArgs(value) {
 
   if (!isFunction && typeof value !== 'object') {
     throw new Error(
-      `v-click-outside: Binding value should be a function or an object, ${typeof bindingValue} given`
+      `v-click-outside: Binding value should be a function or an object, ${typeof value} given`
     )
   }
 
@@ -64,8 +63,8 @@ function unbind(el) {
 }
 
 const VClickOutside = {
-  bind,
-  unbind,
+  beforeMount: bind,
+  unmounted: unbind,
   name: 'click-outside',
 }
 

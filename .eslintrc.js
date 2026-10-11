@@ -1,7 +1,4 @@
 const { defineConfig } = require('eslint-define-config')
-const vue = require('eslint-plugin-vue')
-const prettier = require('eslint-plugin-prettier')
-const prettierRecommended = require('eslint-config-prettier')
 
 module.exports = defineConfig({
   root: true,
@@ -15,7 +12,10 @@ module.exports = defineConfig({
     sourceType: 'module',
   },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-console': [
+      process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+      { allow: ['warn', 'error'] },
+    ],
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-unused-vars': 'warn',
     'no-var': 'error', // Запретить использование var

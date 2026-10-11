@@ -1,40 +1,22 @@
-.DS_Store
+# Dependencies
 node_modules
 
+# Build output (Vercel builds from source)
+dist
 
-# local env files
-.env.local
-.env.*.local
-
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Editor directories and files
-.idea# System files
-.DS_Store
-Thumbs.db
-
-# Node modules
-node_modules
-
-# Local environment files
+# Local env files
 .env
 .env.local
 .env.*.local
 
-# Log files
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 *.log
-*.tmp
-*.cache
 
-# Editor directories and files
+# Editor / OS
 .idea
 .vscode
 *.suo
@@ -42,18 +24,8 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+.DS_Store
+Thumbs.db
 
-# Compiled files
-*.min.js
-*.min.css
-*.map
-
-# Other temporary files
-*.swp
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# Vercel
 .vercel

@@ -2,7 +2,7 @@
   <section class="newsletter">
     <div class="container">
       <div class="newsletter-box">
-        <section-title class="trends-title" :align="'center'" @click.prevent>
+        <section-title class="trends-title" align="center">
           <template #category> делимся впечатлениями </template>
           <template #title> Блог о путешествиях </template>
         </section-title>

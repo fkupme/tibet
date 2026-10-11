@@ -4,11 +4,6 @@ export default {
       width: window.innerWidth,
     }
   },
-  methods: {
-    updateWidth() {
-      this.width = window.innerWidth
-    },
-  },
   computed: {
     isMobile() {
       return this.width < 640
@@ -17,10 +12,15 @@ export default {
       return this.width >= 640 && this.width < 1024
     },
   },
+  methods: {
+    updateWidth() {
+      this.width = window.innerWidth
+    },
+  },
   beforeMount() {
     window.addEventListener('resize', this.updateWidth)
   },
-  beforeDestroy() {
+  beforeUnmount() {
     window.removeEventListener('resize', this.updateWidth)
   },
 }

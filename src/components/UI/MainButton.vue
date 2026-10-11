@@ -5,7 +5,6 @@
 </template>
 
 <script>
-/* eslint-disable */
 import viewportWidth from '@/mixins/viewportWidth'
 export default {
   name: 'main-button',
@@ -18,20 +17,12 @@ export default {
   },
   computed: {
     margin() {
-      if (this.isMobile || this.isTablet) {
-        return
+      if (this.isMobile || this.isTablet) return null
+      const margins = {
+        right: 'margin-left: auto;',
+        left: 'margin-right: auto;',
       }
-      switch (this.align) {
-        case 'right':
-          return 'margin-left: auto;'
-          break
-        case 'left':
-          return 'margin-right: auto;'
-          break
-        default:
-          return 'margin-inline: auto;'
-          break
-      }
+      return margins[this.align] || 'margin-inline: auto;'
     },
   },
 }

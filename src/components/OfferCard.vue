@@ -20,11 +20,6 @@
 <script>
 export default {
   name: 'offer-card',
-  mounted() {
-    if (this.isActive) {
-      alert(this.isActive)
-    }
-  },
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <section class="blog">
     <div class="container">
-      <section-title class="blog-title" :align="'center'" @click.prevent>
+      <section-title class="blog-title" align="center">
         <template #category> делимся впечатлениями </template>
         <template #title> Блог о путешествиях </template>
       </section-title>
@@ -23,11 +23,11 @@
             :key="index"
             :virtual-index="index"
           >
-            <BlogCard :slide="card" />
+            <blog-card :slide="card" />
           </swiper-slide>
         </swiper>
         <div v-else class="blog-grid">
-          <BlogCard
+          <blog-card
             v-for="(card, index) in cards"
             :key="index"
             :slide="card"
@@ -41,44 +41,28 @@
 </template>
 
 <script>
-/* eslint-disable */
 import { mapState } from 'vuex'
 import BlogCard from '@/components/BlogCard.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import {
-  Virtual,
-  Navigation,
-  Pagination,
-  Keyboard,
-  Parallax,
-} from 'swiper/modules'
+import { Virtual } from 'swiper/modules'
 import viewportWidth from '@/mixins/viewportWidth'
 import 'swiper/css'
-import 'swiper/css/navigation'
 
 export default {
-  data() {
-    return {
-      modules: [Virtual, Navigation, Pagination, Keyboard],
-    }
-  },
-  mixins: [viewportWidth],
+  name: 'blog-section',
   components: {
     BlogCard,
     Swiper,
     SwiperSlide,
   },
+  mixins: [viewportWidth],
+  data() {
+    return {
+      modules: [Virtual],
+    }
+  },
   computed: {
     ...mapState({ cards: (state) => state.blog.slides }),
-    isSwiper() {
-      return this.width < 768
-    },
-  },
-  name: 'blog-section',
-  mounted() {
-    if (!this.isSwiper && this.swiperInstance) {
-      this.disableSwiper()
-    }
   },
 }
 </script>

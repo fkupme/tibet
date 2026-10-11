@@ -1,7 +1,7 @@
 <template>
   <section class="gallery">
     <div class="container">
-      <section-title class="trends-title" :align="'center'" @click.prevent>
+      <section-title class="trends-title" align="center">
         <template #category> фото-отчет </template>
         <template #title> Делимся впечатлениями </template>
       </section-title>
@@ -20,7 +20,7 @@
           :key="index"
           :virtual-index="index"
         >
-          <GalleryItem :item="item" />
+          <gallery-item :item="item" />
         </swiper-slide>
       </swiper>
       <div v-else class="gallery-box">
@@ -39,13 +39,7 @@
 <script>
 import { mapState } from 'vuex'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import {
-  Virtual,
-  Navigation,
-  Pagination,
-  Keyboard,
-  Parallax,
-} from 'swiper/modules'
+import { Virtual, Pagination } from 'swiper/modules'
 import 'swiper/swiper-bundle.css'
 import GalleryItem from '@/components/GalleryItem.vue'
 import viewportWidth from '@/mixins/viewportWidth'
@@ -60,7 +54,7 @@ export default {
   mixins: [viewportWidth],
   data() {
     return {
-      modules: [Virtual, Navigation, Pagination, Keyboard, Parallax],
+      modules: [Virtual, Pagination],
     }
   },
   computed: {

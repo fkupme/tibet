@@ -13,15 +13,12 @@ const searchModule = {
       MountKailash: 'Гора Кайлас',
       LakeManasarovar: 'Озеро Манасаровар',
       Himalayas: 'Гималаи',
-      YogaInMounts: 'Йога в горах',
-      TibetTea: 'Тибетский чай',
+      YogaInMountains: 'Йога в горах',
+      TibetanTea: 'Тибетский чай',
     },
     teamID: 'Участники',
     teamOptions: [4, 5, 6, 7, 8, 9, 10],
   }),
-  getters: {},
-  mutations: {},
-  actions: {},
   namespaced: true,
 }
 export default searchModule

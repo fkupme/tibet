@@ -8,8 +8,12 @@
       class="select-field noselect"
       @input="upd"
     >
-      <option v-for="option in options" :key="option" :value="option.key">
-        {{ option }}
+      <option
+        v-for="option in normalizedOptions"
+        :key="option.value"
+        :value="option.value"
+      >
+        {{ option.label }}
       </option>
     </select>
     <input
@@ -29,15 +33,27 @@
 export default {
   name: 'my-select',
   props: {
-    options: Object,
+    options: [Object, Array],
     id: String,
-    modelValue: String,
+    modelValue: [String, Number],
     type: {
       type: String,
       required: true,
     },
   },
   emits: ['update:modelValue'],
+  computed: {
+    // { key: label } -> value=key, [item] -> value=item
+    normalizedOptions() {
+      if (Array.isArray(this.options)) {
+        return this.options.map((item) => ({ value: item, label: item }))
+      }
+      return Object.entries(this.options || {}).map(([value, label]) => ({
+        value,
+        label,
+      }))
+    },
+  },
   methods: {
     upd(event) {
       this.$emit('update:modelValue', event.target.value)

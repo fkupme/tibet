@@ -20,6 +20,7 @@
 
 <script>
 export default {
+  name: 'blog-card',
   props: {
     slide: {
       type: Object,

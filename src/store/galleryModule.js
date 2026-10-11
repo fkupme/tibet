@@ -1,6 +1,6 @@
 import LinkCreator from '@/utils/linkCreator'
 
-const link = new LinkCreator('@/assets/images/', 'gallery', '.png')
+const link = new LinkCreator('gallery', '.png')
 
 const galleryModule = {
   state: {

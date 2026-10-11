@@ -98,9 +98,6 @@ export default {
   div > &__button {
     display: none;
   }
-  // ------------------------------------------
-  @media (width>640px) {
-  }
   @media (width>1024px) {
     position: static;
     display: block;

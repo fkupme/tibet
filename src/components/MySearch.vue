@@ -63,9 +63,9 @@ export default {
   mixins: [toggleMixin, viewportWidth],
   data() {
     return {
-      location: 'Локация',
+      location: '',
       date: '',
-      team: '4',
+      team: 4,
     }
   },
   computed: {
@@ -83,20 +83,22 @@ export default {
     getData() {
       if (!this.location || !this.date || !this.team) {
         alert('Все поля должны быть заполнены!')
+        return null
       }
       const data = {
         location: this.location,
         date: this.date,
         team: this.team,
       }
-      this.location = 'Локация'
+      this.location = ''
       this.date = ''
-      this.team = '4'
+      this.team = 4
       return data
     },
     handler() {
-      getData
-      toggle(isMobile)
+      if (this.getData()) {
+        this.toggle(this.isMobile)
+      }
     },
   },
 }

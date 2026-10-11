@@ -51,7 +51,6 @@
 </template>
 
 <script>
-/* eslint-disable */
 export default {
   name: 'subscribe-form',
 
@@ -67,6 +66,23 @@ export default {
       },
       isSubmitting: false,
     }
+  },
+
+  watch: {
+    'formData.email': {
+      handler(newValue) {
+        if (this.errors.email && newValue) {
+          this.validateEmail()
+        }
+      },
+    },
+    'formData.acceptTerms': {
+      handler(newValue) {
+        if (this.errors.acceptTerms && newValue !== undefined) {
+          this.validateTerms()
+        }
+      },
+    },
   },
 
   methods: {
@@ -131,23 +147,6 @@ export default {
         email: '',
         acceptTerms: '',
       }
-    },
-  },
-
-  watch: {
-    'formData.email': {
-      handler(newValue) {
-        if (this.errors.email && newValue) {
-          this.validateEmail()
-        }
-      },
-    },
-    'formData.acceptTerms': {
-      handler(newValue) {
-        if (this.errors.acceptTerms && newValue !== undefined) {
-          this.validateTerms()
-        }
-      },
     },
   },
 

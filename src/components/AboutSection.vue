@@ -16,7 +16,7 @@
             самых странных слов в Lorem Ipsum, "consectetur" и занялся его
             поисками в классической латинской литературе.
           </p>
-          <main-button :align="'right'">Программа тура</main-button>
+          <main-button align="right">Программа тура</main-button>
         </div>
         <div class="about-video">
           <div class="about-video-wrapper">

@@ -1,13 +1,13 @@
 <template>
   <section class="trends">
     <div class="container">
-      <section-title class="trends-title" :align="'center'" @click.prevent>
+      <section-title class="trends-title" align="center">
         <template #category> по версии отдыхающих </template>
         <template #title> Популярные направления </template>
       </section-title>
       <swiper
         :modules="modules"
-        :slides-per-view="slidesPewView"
+        :slides-per-view="slidesPerView"
         :space-between="30"
         :style="{
           '--swiper-navigation-color': '#fff',
@@ -42,46 +42,37 @@
     <button class="trends__button main-button">Рейтинг направлений</button>
   </section>
 </template>
+
 <script>
-/* eslint-disable */
 import { mapState } from 'vuex'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import {
-  Virtual,
-  Navigation,
-  Pagination,
-  Keyboard,
-  Parallax,
-} from 'swiper/modules'
+import { Virtual, Navigation, Pagination, Keyboard } from 'swiper/modules'
 import viewportWidth from '@/mixins/viewportWidth'
 import TrendCard from '@/components/TrendCard.vue'
 import TrendActive from '@/components/TrendActive.vue'
 import 'swiper/css'
 import 'swiper/css/navigation'
+
 export default {
-  data() {
-    return {
-      modules: [Virtual, Navigation, Pagination, Keyboard, Parallax],
-      index: null,
-    }
-  },
-  mixins: [viewportWidth],
+  name: 'trends-section',
   components: {
     TrendCard,
     Swiper,
     SwiperSlide,
     TrendActive,
   },
-  methods: {
-    setIndex(index) {
-      this.index = index
-    },
+  mixins: [viewportWidth],
+  data() {
+    return {
+      modules: [Virtual, Navigation, Pagination, Keyboard],
+      index: null,
+    }
   },
   computed: {
     ...mapState({
       cards: (state) => state.trends.trends,
     }),
-    slidesPewView() {
+    slidesPerView() {
       if (this.width > 1024) {
         return 3
       } else if (this.width > 640) {
@@ -90,7 +81,11 @@ export default {
       return 1
     },
   },
-  name: 'trends-section',
+  methods: {
+    setIndex(index) {
+      this.index = index
+    },
+  },
 }
 </script>
 

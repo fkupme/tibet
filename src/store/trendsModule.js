@@ -1,6 +1,6 @@
 import LinkCreator from '@/utils/linkCreator'
 
-const link = new LinkCreator(`@/assets/images/`, 'trend')
+const link = new LinkCreator('trend')
 const trendsModule = {
   state: () => ({
     trends: [

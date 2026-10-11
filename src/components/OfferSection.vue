@@ -2,7 +2,7 @@
   <section class="offer">
     <div class="container offer-wrapper">
       <div class="offer-box">
-        <section-title @click.prevent>
+        <section-title>
           <template #category> наше предложение </template>
           <template #title> Лучшие программы для тебя </template>
         </section-title>
@@ -11,7 +11,7 @@
           есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни
           из колледжа.
         </p>
-        <offer-card class="offer__condition" @click.prevent>
+        <offer-card class="offer__condition">
           <template #icon>
             <img src="@/assets/svg/guide.svg" alt="" style="width: 100%" />
           </template>
@@ -43,7 +43,7 @@
             активизации.</template
           >
         </offer-card>
-        <main-button :align="'left'" class="offer__button"
+        <main-button align="left" class="offer__button"
           >Стоимость программ</main-button
         >
       </div>
@@ -100,14 +100,6 @@ export default {
   name: 'offer-section',
   components: {
     OfferCard,
-  },
-  data() {
-    return {
-      bindings: 'bindings',
-    }
-  },
-  methods: {
-    initSwipe() {},
   },
 }
 </script>

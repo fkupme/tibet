@@ -1,7 +1,6 @@
-/* eslint-disable */
 import LinkCreator from '@/utils/linkCreator'
 
-const link = new LinkCreator('@/assets/images/', 'blog', '.png')
+const link = new LinkCreator('blog', '.png')
 const blogModule = {
   state: () => ({
     slides: [

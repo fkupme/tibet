@@ -6,7 +6,7 @@
       <footer-important />
     </div>
     <article class="privacy">
-      <a href="" class="privacy__link"
+      <a href="#" class="privacy__link"
         >Политика обработки персональных данных</a
       >
     </article>

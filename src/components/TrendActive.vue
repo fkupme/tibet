@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <article class="trend-active" :style="background">
-      <div href="#" class="trend-active-link trend-active-blur" @click.prevent>
+      <div class="trend-active-link trend-active-blur" @click.prevent>
         <close-button
           class="trend-active-close"
           @click="$emit('close', null)"
@@ -58,11 +58,6 @@ export default {
             ? `url(${this.card.image})`
             : `url(${this.card.imageDesktop})`,
       }
-    },
-  },
-  methods: {
-    close() {
-      this.index = null
     },
   },
   emits: ['close'],
