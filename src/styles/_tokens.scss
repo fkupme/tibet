@@ -1,0 +1,91 @@
+// Design tokens: injected into every <style lang="scss"> via vite.config.js.
+// Only variables, functions and mixins here — no CSS output.
+@use 'sass:math';
+
+// Layout
+$container-width-mobile: math.div(380, 390) * 100%;
+$container-width-tablet: math.div(580, 640) * 100%;
+$container-width-desktop: math.div(1180, 1920) * 100%;
+
+$mobile-section-padding: 12.82vw;
+$tablet-section-padding: 12.82vw;
+$desktop-section-padding: 5.21vw;
+
+// Colors
+$color-dark-gray: #18121e;
+$color-light-gray: #fdfdfd;
+$color-black: #000000;
+$color-dark-green: #1a3e3e;
+$color-white: #fff;
+$color-yellow: #f2be22;
+
+// Fluid typography: font sizes from the mockups scale with the viewport
+@function font-size($size, $width) {
+  @return math.div($size * 100, $width) * 1vw;
+}
+
+@function nunito($weight) {
+  @if $weight == 'nabold' {
+    @return 'next-art-bold';
+  }
+  @return 'nunito-#{$weight}';
+}
+
+@mixin font-mobile($size, $color, $weight) {
+  font-size: font-size($size, 390);
+  @if $color {
+    color: $color;
+  }
+  @if $weight {
+    font-family: nunito($weight);
+  }
+}
+
+@mixin font-tablet($size, $color, $weight) {
+  font-size: font-size($size, 640);
+  @if $color {
+    color: $color;
+  }
+  @if $weight {
+    font-family: nunito($weight);
+  }
+}
+
+@mixin font-desktop($size, $color, $weight) {
+  font-size: font-size($size, 1920);
+  @if $color {
+    color: $color;
+  }
+  @if $weight {
+    font-family: nunito($weight);
+  }
+}
+
+@mixin hover-underline {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: $color-yellow;
+
+    &::after {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background-color: $color-yellow;
+    opacity: 0;
+    transition:
+      width 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
+  }
+}

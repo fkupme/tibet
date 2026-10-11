@@ -1,33 +1,40 @@
 {
-  "name": "project-tibet",
-  "version": "0.1.0",
+  "name": "tibet",
+  "version": "1.0.0",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "eslint --ext .js,.vue src/",
-    "lint:fix": "eslint --ext .js,.vue src/ --fix"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write src"
   },
   "dependencies": {
-    "core-js": "^3.8.3",
-    "swiper": "^11.1.14",
-    "vue": "^3.2.13",
-    "vuex": "^4.0.0"
+    "swiper": "^11.2.10",
+    "vue": "^3.5.43"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "^5.0.8",
-    "@vue/cli-plugin-vuex": "~5.0.0",
-    "@vue/cli-service": "^5.0.8",
-    "@vue/eslint-config-prettier": "^10.2.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-define-config": "^2.1.0",
-    "eslint-plugin-prettier": "^5.2.3",
-    "eslint-plugin-vue": "^9.32.0",
-    "prettier": "3.3.3",
-    "sass": "^1.32.7",
-    "sass-loader": "^12.0.0"
-  }
+    "@eslint/js": "^10.0.1",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "autoprefixer": "^10.6.1",
+    "eslint": "^10.12.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "eslint-plugin-vue": "^10.11.1",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10",
+    "sass": "^1.105.1",
+    "vite": "^8.3.4"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
 }

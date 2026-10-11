@@ -1,0 +1,115 @@
+// Global styles, imported once in main.js
+
+@font-face {
+  font-family: 'nunito-extrabold';
+  src: url('@/assets/fonts/NunitoSans_7pt-ExtraBold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'nunito-bold';
+  src: url('@/assets/fonts/NunitoSans_7pt-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'nunito-semibold';
+  src: url('@/assets/fonts/NunitoSans_7pt-SemiBold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'nunito-regular';
+  src: url('@/assets/fonts/NunitoSans_7pt-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'nunito-light';
+  src: url('@/assets/fonts/NunitoSans_7pt-Light.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'next-art-bold';
+  src: url('@/assets/fonts/NEXT_ART_Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+html {
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.container {
+  padding: 0 10px;
+  align-self: center;
+  margin: 0 auto;
+  width: $container-width-mobile;
+
+  @media (width > 640px) {
+    width: $container-width-tablet;
+  }
+
+  @media (width > 1024px) {
+    width: $container-width-desktop;
+  }
+}
+
+.main-text {
+  @include font-mobile(16, $color-dark-gray, 'regular');
+  text-align: left;
+  line-height: 1.5;
+
+  @media (width > 640px) {
+    @include font-tablet(18, false, false);
+  }
+
+  @media (width > 1024px) {
+    @include font-desktop(18, false, false);
+  }
+}
